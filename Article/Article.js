@@ -144,27 +144,36 @@ function createArticle(title, date, para1, para2, para3) {
   const content1 = document.createElement('p');
   const content2 = document.createElement('p');
   const content3 = document.createElement('p');
+  const buttonPanal = document.createElement('span')
   const buttonOpen = document.createElement('span')
+  const buttonClose = document.createElement('span')
 
   article.append(articleTitle);
   article.append(articleDate);
   article.append(content1);
   article.append(content2);
   article.append(content3);
-  article.append(buttonOpen);
+  article.append(buttonPanal);
+  buttonPanal.append(buttonOpen);
+  buttonPanal.append(buttonClose);
+
 
   article.classList.add('article');
   articleDate.classList.add('date');
-  buttonOpen.classList.add('expandButton');
+  buttonClose.classList.add('expandButton');
+
 
   articleTitle.textContent = title;
   articleDate.textContent = date;
   content1.textContent = para1;
   content2.textContent = para2;
   content3.textContent = para3;
-  buttonOpen.textContent = '\u25BC'
+  buttonOpen.textContent = '\u25B2'
+  buttonClose.textContent = '\u25BC'
 
-  buttonOpen.addEventListener('click', () => {
+  buttonPanal.addEventListener('click', () => {
+    buttonClose.classList.toggle('expandButton');
+    buttonOpen.classList.toggle('expandButton');
     article.classList.toggle('article-open');
   })
 
